@@ -20,9 +20,8 @@ const sequelize = new Sequelize(
 // authentication and synchronization
 sequelize.authenticate()
   .then(() => {
-    console.log('Connected to the database.');
-    sequelize.sync().catch((error) => console.log("Cannot sync the database:", error));
+    sequelize.sync().catch(() => console.log("Cannot sync the database"));
   })
-  .catch((error) => console.log("Cannot connect to database, please check environment credentials:", error));
+  .catch(() => console.log("Cannot connect to database, please check environment credentials"));
 
 module.exports = sequelize;
